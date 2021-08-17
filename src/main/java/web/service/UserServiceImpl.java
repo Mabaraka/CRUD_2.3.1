@@ -11,24 +11,23 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
-
     private UserDao userDao;
 
-    @Autowired
     public UserServiceImpl(UserDao userDao) {
         this.userDao = userDao;
     }
 
+
     @Override
     @Transactional
-    public List<User> index() {
-        return userDao.index();
+    public List<User> getAll() {
+        return userDao.getAll();
     }
 
     @Override
     @Transactional
-    public User show(int id) {
-        return userDao.show(id);
+    public User getUser(int id) {
+        return userDao.getUser(id);
     }
 
     @Override

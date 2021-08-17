@@ -19,6 +19,5 @@ public class DataInitializer {
     public void Init() {
         User user = new User("Bob", 21);
         userService.save(user);
-
     }
 }

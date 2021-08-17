@@ -1,6 +1,5 @@
 package web.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,21 +13,21 @@ public class UsersController {
 
     private UserService userService;
 
-    @Autowired
     public UsersController(UserService userService) {
         this.userService = userService;
     }
 
+
     @GetMapping()
-    public String index(Model model) {
-        model.addAttribute("Users", userService.index());
-        return "index";
+    public String getAll(Model model) {
+        model.addAttribute("Users", userService.getAll());
+        return "getAll";
     }
 
     @GetMapping("/{id}")
-    public String show(@PathVariable("id") int id, Model model) {
-        model.addAttribute("user", userService.show(id));
-        return "show";
+    public String getUser(@PathVariable("id") int id, Model model) {
+        model.addAttribute("user", userService.getUser(id));
+        return "getUser";
     }
 
     @GetMapping("/new")
@@ -43,8 +42,8 @@ public class UsersController {
     }
 
     @GetMapping("/{id}/edit")
-    public String edit(Model model, @PathVariable("id") int id){
-        model.addAttribute("user", userService.show(id));
+    public String editUser(Model model, @PathVariable("id") int id){
+        model.addAttribute("user", userService.getUser(id));
         return "edit";
     }
 
@@ -59,5 +58,4 @@ public class UsersController {
         userService.delete(id);
         return "redirect:/users";
     }
-
 }

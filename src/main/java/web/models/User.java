@@ -8,16 +8,16 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
     private int id;
-
-    @Column
     private String name;
-
-    @Column
     private int age;
 
     public User() {
+    }
+
+    public User(String name, int age) {
+        this.name = name;
+        this.age = age;
     }
 
     public int getId() {
@@ -44,8 +44,4 @@ public class User {
         this.age = age;
     }
 
-    public User(String name, int age) {
-        this.name = name;
-        this.age = age;
-    }
 }
